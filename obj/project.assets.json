@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\karen\\source\\repos\\MinesweeperProject\\Minesweeper\\Minesweeper.csproj",
+      "projectUniqueName": "C:\\Users\\karen\\source\\repos\\MinesweeperProject\\Minesweeper.csproj",
       "projectName": "Minesweeper",
-      "projectPath": "C:\\Users\\karen\\source\\repos\\MinesweeperProject\\Minesweeper\\Minesweeper.csproj",
+      "projectPath": "C:\\Users\\karen\\source\\repos\\MinesweeperProject\\Minesweeper.csproj",
       "packagesPath": "C:\\Users\\karen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\karen\\source\\repos\\MinesweeperProject\\Minesweeper\\obj\\",
+      "outputPath": "C:\\Users\\karen\\source\\repos\\MinesweeperProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\karen\\AppData\\Roaming\\NuGet\\NuGet.Config",
