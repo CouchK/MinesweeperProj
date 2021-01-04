@@ -1,6 +1,6 @@
 ﻿namespace Minesweeper
 {
-    partial class Form1
+    partial class frmMain
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,10 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // frmMain
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(1964, 1097);
+            this.Name = "frmMain";
+            this.Text = "Minesweeper";
+            this.Load += new System.EventHandler(this.frmMain_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
