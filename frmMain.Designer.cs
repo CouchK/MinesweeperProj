@@ -29,31 +29,56 @@
         private void InitializeComponent()
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblScore = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 26);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1909, 1035);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1873, 1360);
             this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1931, 135);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(117, 48);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Score:";
+            // 
+            // lblScore
+            // 
+            this.lblScore.AutoSize = true;
+            this.lblScore.Location = new System.Drawing.Point(2075, 135);
+            this.lblScore.Name = "lblScore";
+            this.lblScore.Size = new System.Drawing.Size(48, 48);
+            this.lblScore.TabIndex = 1;
+            this.lblScore.Text = "\"\"";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1964, 1097);
+            this.ClientSize = new System.Drawing.Size(2264, 1398);
+            this.Controls.Add(this.lblScore);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "frmMain";
             this.Text = "Minesweeper";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblScore;
     }
 }
 

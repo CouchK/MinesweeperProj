@@ -34,7 +34,7 @@ namespace Minesweeper
         public void displayBoard()
         {
             //Get generated array
-            String[,] gameBoard = new String[size, size];
+            int[,] gameBoard = new int[size, size];
             gameBoard = board.getBoard();
 
             //Create buttons
@@ -46,9 +46,9 @@ namespace Minesweeper
                 {
                     buttons[i, j] = new Button();
                     buttons[i, j].Name = gameBoard[i, j] + "";
-                    buttons[i, j].Text = "";
-                    buttons[i, j].Height = 200;
-                    buttons[i, j].Width = 200;
+                    buttons[i, j].Text = gameBoard[i, j] + ""; 
+                    buttons[i, j].Height = 150;
+                    buttons[i, j].Width = 150;
                     buttons[i, j].Padding = new Padding(5);
                     buttons[i, j].BackColor = Color.DarkGray;
 
@@ -66,7 +66,7 @@ namespace Minesweeper
             Button clickedButton = (Button)sender;
 
             //Game over if bomb is clicked
-            if (clickedButton.Name.Equals("bomb"))
+            if (clickedButton.Name.Equals(5))
             {
                 MessageBox.Show("Game Over");
 

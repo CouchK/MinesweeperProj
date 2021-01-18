@@ -6,38 +6,71 @@ namespace Minesweeper
 {
     class Board
     {
-        private const int SIZE = 5;
-        private String bomb = "bomb";
-        private String[,] board;
+        private Cell[,] board;
+        private const int SIZE = 6;
 
         public Board()
         {
+            board = new Cell[SIZE, SIZE];
             createBoard();
+            getNeighbors();
         }
 
         public void createBoard()
         {
-            board = new String[SIZE, SIZE];
-
-            Random rand = new Random();
-            int randNum = 0;
-
-            //Fill board
-            for(int x = 0; x < SIZE; ++x)
+            for (int x = 0; x < SIZE-1; ++x)
             {
-                for(int y = 0; y < SIZE; ++y)
+                for (int y = 0; y < SIZE-1; ++y)
                 {
-                    randNum = rand.Next(4);
-
-                    if (randNum == 0) board[x, y] = bomb;
-                    else board[x, y] = randNum.ToString();
+                    board[x, y] = new Cell();
                 }
             }
         }
 
-        public String[,] getBoard()
+        public void getNeighbors()
         {
-            return board;
+            for(int x = 1; x < SIZE-1; ++x)
+            {
+                for(int y = 1; y < SIZE-1; ++y)
+                {
+                    int count = 0;
+                    if(board[x-1, y-1].getCellValue() == 99)
+                    {
+                        count++;
+                    }
+                    if(board[x-1, y].getCellValue() == 99)
+                    {
+                        count++;
+                    }
+                    if(board[x-1, y+1].getCellValue() == 99)
+                    {
+                        count++;
+                    }
+                    if(board[x, y-1].getCellValue() == 99)
+                    {
+                        count++;
+                    }
+                    if(board[x, y+1].getCellValue() == 99)
+                    {
+                        count++;
+                    }
+                    if(board[x+1, y-1].getCellValue() == 99)
+                    {
+                        count++;
+                    }
+                    if(board[x+1, y].getCellValue() == 99)
+                    {
+                        count++;
+                    }
+                    if(board[x+1, y+1].getCellValue() == 99)
+                    {
+                        count++;
+                    }
+                    board[x, y].setNeighbors(count);
+
+               
+                }
+            }
         }
 
         public int getSize()
@@ -45,9 +78,19 @@ namespace Minesweeper
             return SIZE;
         }
 
-        public Boolean checkIfBomb()
+        public int[,] getBoard()
         {
-            return false;
+            int[,] intBoard = new int[SIZE, SIZE];
+
+            for(int x = 0; x < SIZE; ++x)
+            {
+                for(int y = 0; y < SIZE; ++y)
+                {
+                    intBoard[x, y] = board[x, y].getCellValue();
+                }
+            }
+
+            return intBoard;
         }
     }
 }
