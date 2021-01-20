@@ -25,7 +25,7 @@ namespace Minesweeper
         private void frmMain_Load(object sender, EventArgs e)
         {
             board = new Board();
-            size = board.getSize();
+            size = board.getBoardSize();
             score = 0;
 
             displayBoard();
@@ -45,16 +45,17 @@ namespace Minesweeper
                 for (int j = 0; j < size; j++)
                 {
                     buttons[i, j] = new Button();
-                    buttons[i, j].Name = gameBoard[i, j] + "";
+                    buttons[i, j].Name = i + "" + j;
                     buttons[i, j].Text = gameBoard[i, j] + ""; 
-                    buttons[i, j].Height = 150;
-                    buttons[i, j].Width = 150;
+                    buttons[i, j].Height = 130;
+                    buttons[i, j].Width = 130;
                     buttons[i, j].Padding = new Padding(5);
-                    buttons[i, j].BackColor = Color.DarkGray;
+                    if (buttons[i, j].Text == "-1") buttons[i, j].BackColor = Color.Blue;
+                    else buttons[i, j].BackColor = Color.DarkGray;
 
                     //Add a button click event handler
                     buttons[i, j].Click += new EventHandler(buttonClick);
-
+                  
                     //Add button to form
                     flowLayoutPanel1.Controls.Add(buttons[i, j]);
                 }
@@ -81,7 +82,12 @@ namespace Minesweeper
             }
             else
             {
-                MessageBox.Show(clickedButton.Name);
+                //MessageBox.Show(clickedButton.Name);
+
+                //Check if cell is revealed
+                int row = Int32.Parse(clickedButton.Name.Substring(0));
+                int col = Int32.Parse(clickedButton.Name.Substring(1));
+                MessageBox.Show(row + " " + col);
 
                 //Update score
 
@@ -91,6 +97,11 @@ namespace Minesweeper
         }
 
         private void updateScore()
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
