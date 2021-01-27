@@ -13,9 +13,9 @@ namespace Minesweeper
     public partial class frmMain : Form
     {
         Board board;
+        int[,] gameBoard;
         Button[,] buttons;
-        int size;
-        int score;
+        int SIZE;
 
         public frmMain()
         {
@@ -25,8 +25,7 @@ namespace Minesweeper
         private void frmMain_Load(object sender, EventArgs e)
         {
             board = new Board();
-            size = board.getBoardSize();
-            score = 0;
+            SIZE = board.getBoardSize();
 
             displayBoard();
         }
@@ -34,19 +33,19 @@ namespace Minesweeper
         public void displayBoard()
         {
             //Get generated array
-            int[,] gameBoard = new int[size, size];
+            gameBoard = new int[SIZE+2, SIZE+2];
             gameBoard = board.getBoard();
 
             //Create buttons
-            buttons = new Button[size, size];
+            buttons = new Button[SIZE, SIZE];
 
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < SIZE; i++)
             {
-                for (int j = 0; j < size; j++)
+                for (int j = 0; j < SIZE; j++)
                 {
                     buttons[i, j] = new Button();
-                    buttons[i, j].Name = i + "" + j;
-                    buttons[i, j].Text = gameBoard[i, j] + ""; 
+                    buttons[i, j].Name = i + " " + j;
+                    buttons[i, j].Text = "";
                     buttons[i, j].Height = 130;
                     buttons[i, j].Width = 130;
                     buttons[i, j].Padding = new Padding(5);
@@ -54,7 +53,7 @@ namespace Minesweeper
                     else buttons[i, j].BackColor = Color.DarkGray;
 
                     //Add a button click event handler
-                    buttons[i, j].Click += new EventHandler(buttonClick);
+                    buttons[i, j].Click += new EventHandler(ButtonClick);
                   
                     //Add button to form
                     flowLayoutPanel1.Controls.Add(buttons[i, j]);
@@ -62,38 +61,42 @@ namespace Minesweeper
             }
         }
 
-        private void buttonClick(object sender, EventArgs e)
+        private void ButtonClick(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
+            string position = clickedButton.Name.Substring(0);
 
-            //Game over if bomb is clicked
-            if (clickedButton.Name.Equals(5))
+            string[] temp = position.Split(" ");
+            int x = int.Parse(temp[0]);
+            int y = int.Parse(temp[1]);
+
+            int value = board.getCellValue(x,y);
+
+            //Game over if bomb is clicked - game over
+            if(value == -1)
             {
                 MessageBox.Show("Game Over");
 
                 //Disable buttons
-                for (int i = 0; i < size; i++)
+                for (int i = 0; i < SIZE; i++)
                 {
-                    for (int j = 0; j < size; j++)
+                    for (int j = 0; j < SIZE; j++)
                     {
                         buttons[i, j].Enabled = false;
                     }
                 }
             }
+            else if(!board.isRevealed(temp[0], temp[1]))
+            {
+                //Reveal cell
+                board.setRevealed(temp[0], temp[1]);
+                buttons[x, y].BackColor = Color.Pink;
+                buttons[x, y].Text = board.getNeighbors(x, y) + "";
+            }
             else
             {
-                //MessageBox.Show(clickedButton.Name);
-
-                //Check if cell is revealed
-                int row = Int32.Parse(clickedButton.Name.Substring(0));
-                int col = Int32.Parse(clickedButton.Name.Substring(1));
-                MessageBox.Show(row + " " + col);
-
-                //Update score
-
-                //Reveal cells around clicked 
+                MessageBox.Show("nothing");
             }
-
         }
 
         private void updateScore()

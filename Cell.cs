@@ -9,25 +9,20 @@ namespace Minesweeper
         private int neighbors;
         private bool revealed;
         private int cell;
-        private const int MAX_BOMBS = 10;
-        private int totalBombs;
+        private bool isBomb;
 
         public Cell()
         {
             cell = 0;
             neighbors = 0;
+            revealed = false;
+            isBomb = false;
 
             createCell();
         }
 
         public void createCell()
         {
-            //Get rand num
-            Random rand = new Random();
-            int randNum = rand.Next(4);
-
-            cell = randNum;
-
             revealed = false;
         }
 
@@ -50,10 +45,24 @@ namespace Minesweeper
         {
             revealed = true;
         }
-
         public void setNeighbors(int amnt)
         {
             neighbors = amnt;
+        }
+
+        public int getNeighbors()
+        {
+            return neighbors;
+        }
+
+        public void setBomb()
+        {
+            isBomb = true;
+        }
+
+        public bool checkBomb()
+        {
+            return isBomb;
         }
     }
 }
