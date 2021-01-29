@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Minesweeper
 {
@@ -12,49 +10,34 @@ namespace Minesweeper
         public Board()
         {
             board = new Cell[SIZE+2, SIZE+2];
-            createBoard();
-            setBombs();
+            CreateBoard();
+            SetBombs();
             CalcNeighbors();
         }
 
-        public void createBoard()
+        public void CreateBoard()
         {
-            for (int x = 0; x < SIZE+2; ++x)
+            for (int x = 1; x < SIZE+2; ++x)
             {
-                for (int y = 0; y < SIZE+2; ++y)
+                for (int y = 1; y < SIZE+2; ++y)
                 {
                     board[x, y] = new Cell();
                 }
             }     
         }
-        public int[,] getBoard()
-        {
-            int[,] intBoard = new int[SIZE, SIZE];
 
-            for (int x = 0; x < SIZE; ++x)
-            {
-                for (int y = 0; y < SIZE; ++y)
-                {
-                    intBoard[x, y] = board[x, y].getCellValue();
-                }
-            }
-
-            return intBoard;
-        }
-
-
-        public void setBombs()
+        public void SetBombs()
         {
             Random rand = new Random();
-            int randX = rand.Next(9);
-            int randY = rand.Next(9);
+            int randX = rand.Next(1,9);
+            int randY = rand.Next(1,9);
 
             for(int x = 0; x < 10; x++)
             {
-                board[randX, randY].setCellValue(-1);
-                board[randX, randY].setBomb();
-                randX = rand.Next(9);
-                randY = rand.Next(9);
+                board[randX, randY].SetCellValue(-1);
+                board[randX, randY].SetBomb();
+                randX = rand.Next(1,9);
+                randY = rand.Next(1,9);
             }
         }
 
@@ -65,73 +48,73 @@ namespace Minesweeper
                 for(int y = 1; y < SIZE; ++y)
                 {
                     int count = 0;
-                    if(board[x-1, y-1].checkBomb())
+                    if(board[x-1, y-1].CheckBomb())
                     {
                         count++;
                     }
-                    if(board[x-1, y].checkBomb())
+                    if(board[x-1, y].CheckBomb())
                     {
                         count++;
                     }
-                    if(board[x-1, y+1].checkBomb())
+                    if(board[x-1, y+1].CheckBomb())
                     {
                         count++;
                     }
-                    if(board[x, y-1].checkBomb())
+                    if(board[x, y-1].CheckBomb())
                     {
                         count++;
                     }
-                    if(board[x, y+1].checkBomb())
+                    if(board[x, y+1].CheckBomb())
                     {
                         count++;
                     }
-                    if(board[x+1, y-1].checkBomb())
+                    if(board[x+1, y-1].CheckBomb())
                     {
                         count++;
                     }
-                    if(board[x+1, y].checkBomb())
+                    if(board[x+1, y].CheckBomb())
                     {
                         count++;
                     }
-                    if(board[x+1, y+1].checkBomb())
+                    if(board[x+1, y+1].CheckBomb())
                     {
                         count++;
                     }
-                    board[x, y].setNeighbors(count);
+                    board[x, y].SetNeighbors(count);
                 }
             }
         }
 
-        public int getNeighbors(int x, int y)
+        public int GetNeighbors(int x, int y)
         {
-            return board[x, y].getNeighbors();
+            return board[x, y].GetNeighbors();
         }
 
-        public int getBoardSize()
+        public int GetBoardSize()
         {
             return SIZE;
         }
 
-        public bool isRevealed(string posX, string posY)
+        public bool IsRevealed(string posX, string posY)
         {
             int x = int.Parse(posX);
             int y = int.Parse(posY);
-            if (board[x, y].isRevealed())
+            if (board[x, y].IsRevealed())
                 return true;
             else
                 return false;
         }
 
-        public void setRevealed(string posX, string posY)
+        public void SetRevealed(string posX, string posY)
         {
             int x = int.Parse(posX);
             int y = int.Parse(posY);
-            board[x, y].setRevealed();
+            board[x, y].SetRevealed();
         }
 
-        public int getCellValue(int x, int y)
+        public int GetCellValue(int x, int y)
         {
-            return board[x, y].getCellValue();
+            return board[x, y].GetCellValue();
         }
     }
 }

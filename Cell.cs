@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Minesweeper
+﻿namespace Minesweeper
 {
     class Cell
     {
@@ -18,49 +14,49 @@ namespace Minesweeper
             revealed = false;
             isBomb = false;
 
-            createCell();
+            CreateCell();
         }
 
-        public void createCell()
+        public void CreateCell()
         {
             revealed = false;
         }
 
-        public int getCellValue()
+        public int GetCellValue()
         {
             return cell;
         }
 
-        public void setCellValue(int val)
+        public void SetCellValue(int newValue)
         {
-            cell = val;
+            cell = newValue;
         }
 
-        public bool isRevealed()
+        public bool IsRevealed()
         {
             return revealed;
         }
 
-        public void setRevealed()
+        public void SetRevealed()
         {
             revealed = true;
         }
-        public void setNeighbors(int amnt)
+        public void SetNeighbors(int count)
         {
-            neighbors = amnt;
+            neighbors = count;
         }
 
-        public int getNeighbors()
+        public int GetNeighbors()
         {
             return neighbors;
         }
 
-        public void setBomb()
+        public void SetBomb()
         {
             isBomb = true;
         }
 
-        public bool checkBomb()
+        public bool CheckBomb()
         {
             return isBomb;
         }
