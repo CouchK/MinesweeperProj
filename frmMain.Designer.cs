@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gameGrid = new System.Windows.Forms.FlowLayoutPanel();
+            this.gameTimer = new System.Windows.Forms.Timer(this.components);
+            this.lblTimer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameGrid
@@ -39,11 +42,29 @@
             this.gameGrid.Size = new System.Drawing.Size(1265, 1267);
             this.gameGrid.TabIndex = 0;
             // 
+            // gameTimer
+            // 
+            this.gameTimer.Interval = 1000;
+            this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
+            // 
+            // lblTimer
+            // 
+            this.lblTimer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTimer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTimer.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.lblTimer.Location = new System.Drawing.Point(1492, 58);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(224, 99);
+            this.lblTimer.TabIndex = 1;
+            this.lblTimer.Text = "00:00";
+            this.lblTimer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2257, 1501);
+            this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.gameGrid);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -56,6 +77,8 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel gameGrid;
+        private System.Windows.Forms.Timer gameTimer;
+        private System.Windows.Forms.Label lblTimer;
     }
 }
 

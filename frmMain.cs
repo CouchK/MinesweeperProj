@@ -9,6 +9,7 @@ namespace Minesweeper
         Board board;
         Button[,] buttons;
         int SIZE;
+        int seconds, minutes;
 
         public frmMain()
         {
@@ -19,8 +20,14 @@ namespace Minesweeper
         {
             board = new Board();
             SIZE = board.GetBoardSize();
+            seconds = 0; 
+            minutes = 0;
 
+            //Create game board
             DisplayBoard();
+
+            //Start timer
+            gameTimer.Start();
         }
 
         public void DisplayBoard()
@@ -62,6 +69,9 @@ namespace Minesweeper
             //Game over if bomb is clicked - game over
             if(bombCheck)
             {
+                //Stop Timer
+                gameTimer.Stop();
+
                 //Disable buttons and reveal entire board
                 for (int i = 0; i < SIZE; i++)
                 {
@@ -99,9 +109,15 @@ namespace Minesweeper
             else { }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void gameTimer_Tick(object sender, EventArgs e)
         {
-
+            seconds++;
+            if(seconds == 60)
+            {
+                seconds = 0;
+                minutes += 1;
+            }
+            lblTimer.Text = string.Format("{0}:{1}", minutes.ToString().PadLeft(2, '0'), seconds.ToString().PadLeft(2, '0'));
         }
     }
 }
