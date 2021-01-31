@@ -95,26 +95,27 @@ namespace Minesweeper
             return SIZE;
         }
 
-        public bool IsRevealed(string posX, string posY)
+        public bool IsRevealed(int x, int y)
         {
-            int x = int.Parse(posX);
-            int y = int.Parse(posY);
             if (board[x, y].IsRevealed())
                 return true;
             else
                 return false;
         }
 
-        public void SetRevealed(string posX, string posY)
+        public void SetRevealed(int x, int y)
         {
-            int x = int.Parse(posX);
-            int y = int.Parse(posY);
             board[x, y].SetRevealed();
         }
 
         public int GetCellValue(int x, int y)
         {
             return board[x, y].GetCellValue();
+        }
+
+        public bool isBomb(int x, int y)
+        {
+            return board[x, y].CheckBomb();
         }
     }
 }

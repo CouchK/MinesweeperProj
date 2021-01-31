@@ -39,14 +39,15 @@ namespace Minesweeper
                     buttons[i, j].Height = 130;
                     buttons[i, j].Width = 130;
                     buttons[i, j].Padding = new Padding(5);
-                    if (buttons[i, j].Text == "-1") buttons[i, j].BackColor = Color.Blue;
-                    else buttons[i, j].BackColor = Color.DarkGray;
+                    // (buttons[i, j].Text == "-1") buttons[i, j].BackColor = Color.Blue;
+                    //else buttons[i, j].BackColor = Color.DarkGray;
+                    buttons[i, j].BackColor = Color.DarkGray;
 
                     //Add a button click event handler
                     buttons[i, j].Click += new EventHandler(ButtonClick);
                   
                     //Add button to form
-                    flowLayoutPanel1.Controls.Add(buttons[i, j]);
+                    gameGrid.Controls.Add(buttons[i, j]);
                 }
             }
         }
@@ -60,35 +61,31 @@ namespace Minesweeper
             int x = int.Parse(temp[0]);
             int y = int.Parse(temp[1]);
 
-            int value = board.GetCellValue(x,y);
+            bool bombCheck = board.isBomb(x,y);
 
             //Game over if bomb is clicked - game over
-            if(value == -1)
+            if(bombCheck)
             {
-                MessageBox.Show("Game Over");
-
-                //Disable buttons
+                //Disable buttons and reveal entire board
                 for (int i = 0; i < SIZE; i++)
                 {
                     for (int j = 0; j < SIZE; j++)
                     {
                         buttons[i, j].Enabled = false;
+
+                        if (board.isBomb(i+1, j+1)) buttons[i, j].Text = "B";
+                        else buttons[i, j].Text = board.GetNeighbors(i+1, j+1) + "";
                     }
                 }
-
-                
             }
-            else if(!board.IsRevealed(temp[0], temp[1]))
+            else if(!board.IsRevealed(x, y))
             {
                 //Reveal cell
-                board.SetRevealed(temp[0], temp[1]);
+                board.SetRevealed(x, y);
                 buttons[x-1, y-1].BackColor = Color.Pink;
                 buttons[x-1, y-1].Text = board.GetNeighbors(x, y) + "";
             }
-            else
-            {
-                MessageBox.Show("nothing");
-            }
+            else { }
         }
 
         private void label1_Click(object sender, EventArgs e)
