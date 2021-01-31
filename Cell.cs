@@ -13,13 +13,6 @@
             neighbors = 0;
             revealed = false;
             isBomb = false;
-
-            CreateCell();
-        }
-
-        public void CreateCell()
-        {
-            revealed = false;
         }
 
         public int GetCellValue()

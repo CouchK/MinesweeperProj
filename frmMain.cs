@@ -33,9 +33,9 @@ namespace Minesweeper
                 for (int j = 0; j < SIZE; j++)
                 {
                     buttons[i, j] = new Button();
-                    buttons[i, j].Name = i + " " + j;
-                    buttons[i, j].Text = board.GetCellValue(i, j) + "";
-                    //buttons[i, j].Text = i + " " + j;
+                    buttons[i, j].Name = (i+1) + " " + (j+1);
+                    //buttons[i, j].Text = board.GetCellValue(i+1, j+1) + "";
+                    //buttons[i, j].Text = (i+1) + " " + (j+1);
                     buttons[i, j].Height = 130;
                     buttons[i, j].Width = 130;
                     buttons[i, j].Padding = new Padding(5);
@@ -75,13 +75,15 @@ namespace Minesweeper
                         buttons[i, j].Enabled = false;
                     }
                 }
+
+                
             }
             else if(!board.IsRevealed(temp[0], temp[1]))
             {
                 //Reveal cell
                 board.SetRevealed(temp[0], temp[1]);
-                buttons[x, y].BackColor = Color.Pink;
-                buttons[x, y].Text = board.GetNeighbors(x, y) + "";
+                buttons[x-1, y-1].BackColor = Color.Pink;
+                buttons[x-1, y-1].Text = board.GetNeighbors(x, y) + "";
             }
             else
             {

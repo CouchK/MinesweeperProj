@@ -17,9 +17,9 @@ namespace Minesweeper
 
         public void CreateBoard()
         {
-            for (int x = 1; x < SIZE+2; ++x)
+            for (int x = 0; x < SIZE+2; ++x)
             {
-                for (int y = 1; y < SIZE+2; ++y)
+                for (int y = 0; y < SIZE+2; ++y)
                 {
                     board[x, y] = new Cell();
                 }
@@ -43,44 +43,44 @@ namespace Minesweeper
 
         public void CalcNeighbors()
         {
-            for(int x = 1; x < SIZE; ++x)
+            for(int r = 1; r < SIZE; ++r)
             {
-                for(int y = 1; y < SIZE; ++y)
+                for(int c = 1; c < SIZE; ++c)
                 {
                     int count = 0;
-                    if(board[x-1, y-1].CheckBomb())
+                    if(board[r-1, c-1].CheckBomb())
                     {
                         count++;
                     }
-                    if(board[x-1, y].CheckBomb())
+                    if(board[r-1, c].CheckBomb())
                     {
                         count++;
                     }
-                    if(board[x-1, y+1].CheckBomb())
+                    if(board[r-1, c+1].CheckBomb())
                     {
                         count++;
                     }
-                    if(board[x, y-1].CheckBomb())
+                    if(board[r, c-1].CheckBomb())
                     {
                         count++;
                     }
-                    if(board[x, y+1].CheckBomb())
+                    if(board[r, c+1].CheckBomb())
                     {
                         count++;
                     }
-                    if(board[x+1, y-1].CheckBomb())
+                    if(board[r+1, c-1].CheckBomb())
                     {
                         count++;
                     }
-                    if(board[x+1, y].CheckBomb())
+                    if(board[r+1, c].CheckBomb())
                     {
                         count++;
                     }
-                    if(board[x+1, y+1].CheckBomb())
+                    if(board[r+1, c+1].CheckBomb())
                     {
                         count++;
                     }
-                    board[x, y].SetNeighbors(count);
+                    board[r, c].SetNeighbors(count);
                 }
             }
         }
