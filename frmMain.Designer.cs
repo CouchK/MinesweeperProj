@@ -34,16 +34,16 @@
             // gameGrid
             // 
             this.gameGrid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gameGrid.Location = new System.Drawing.Point(373, 56);
+            this.gameGrid.Location = new System.Drawing.Point(493, 180);
             this.gameGrid.Name = "gameGrid";
-            this.gameGrid.Size = new System.Drawing.Size(1364, 1362);
+            this.gameGrid.Size = new System.Drawing.Size(1265, 1267);
             this.gameGrid.TabIndex = 0;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2181, 1501);
+            this.ClientSize = new System.Drawing.Size(2257, 1501);
             this.Controls.Add(this.gameGrid);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

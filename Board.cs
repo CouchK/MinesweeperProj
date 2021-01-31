@@ -32,7 +32,7 @@ namespace Minesweeper
             int randX = rand.Next(1,9);
             int randY = rand.Next(1,9);
 
-            for(int x = 0; x < 10; x++)
+            for(int x = 0; x < SIZE; x++)
             {
                 board[randX, randY].SetCellValue(-1);
                 board[randX, randY].SetBomb();
