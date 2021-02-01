@@ -32,6 +32,7 @@
             this.gameGrid = new System.Windows.Forms.FlowLayoutPanel();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.lblTimer = new System.Windows.Forms.Label();
+            this.btnStart = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // gameGrid
@@ -59,11 +60,22 @@
             this.lblTimer.Text = "00:00";
             this.lblTimer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnStart
+            // 
+            this.btnStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnStart.Location = new System.Drawing.Point(1039, 12);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(149, 145);
+            this.btnStart.TabIndex = 2;
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2257, 1501);
+            this.Controls.Add(this.btnStart);
             this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.gameGrid);
             this.Name = "frmMain";
@@ -79,6 +91,7 @@
         private System.Windows.Forms.FlowLayoutPanel gameGrid;
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Label lblTimer;
+        private System.Windows.Forms.Button btnStart;
     }
 }
 

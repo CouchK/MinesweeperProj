@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -22,6 +23,9 @@ namespace Minesweeper
             SIZE = board.GetBoardSize();
             seconds = 0; 
             minutes = 0;
+
+            //Set smiley face
+            btnStart.BackgroundImage = Minesweeper.Properties.Resources.happy;
 
             //Create game board
             DisplayBoard();
@@ -72,7 +76,7 @@ namespace Minesweeper
                 //Stop Timer
                 gameTimer.Stop();
 
-                //Disable buttons and reveal entire board
+                //Disable buttons and reveal all bombs
                 for (int i = 0; i < SIZE; i++)
                 {
                     for (int j = 0; j < SIZE; j++)
@@ -82,6 +86,9 @@ namespace Minesweeper
                         if (board.isBomb(i+1, j+1)) buttons[i, j].Text = "B";
                     }
                 }
+
+                //Change icon to dead smiley
+                btnStart.BackgroundImage = Minesweeper.Properties.Resources.dead;
 
                 MessageBox.Show("Game Over!");
             }
@@ -109,8 +116,21 @@ namespace Minesweeper
             else { }
         }
 
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            //Restart game
+            Process.Start("Minesweeper");
+            Process[] procs = Process.GetProcessesByName("B");
+
+            foreach (Process proc in procs)
+                proc.Kill();
+
+            Environment.Exit(-1);
+        }
+
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            //Increment timer
             seconds++;
             if(seconds == 60)
             {

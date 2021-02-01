@@ -13,3 +13,4 @@ C:\Users\karen\source\repos\MinesweeperProject\obj\Debug\netcoreapp3.1\Minesweep
 C:\Users\karen\source\repos\MinesweeperProject\obj\Debug\netcoreapp3.1\Minesweeper.dll
 C:\Users\karen\source\repos\MinesweeperProject\obj\Debug\netcoreapp3.1\Minesweeper.pdb
 C:\Users\karen\source\repos\MinesweeperProject\obj\Debug\netcoreapp3.1\Minesweeper.genruntimeconfig.cache
+C:\Users\karen\source\repos\MinesweeperProject\obj\Debug\netcoreapp3.1\Minesweeper.Properties.Resources.resources
