@@ -4,25 +4,13 @@
     {
         private int neighbors;
         private bool revealed;
-        private int cell;
         private bool isBomb;
 
         public Cell()
         {
-            cell = 0;
             neighbors = 0;
             revealed = false;
             isBomb = false;
-        }
-
-        public int GetCellValue()
-        {
-            return cell;
-        }
-
-        public void SetCellValue(int newValue)
-        {
-            cell = newValue;
         }
 
         public bool IsRevealed()

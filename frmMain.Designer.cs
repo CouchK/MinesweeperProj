@@ -37,6 +37,7 @@
             // 
             // gameGrid
             // 
+            this.gameGrid.BackColor = System.Drawing.SystemColors.HighlightText;
             this.gameGrid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.gameGrid.Location = new System.Drawing.Point(493, 180);
             this.gameGrid.Name = "gameGrid";
@@ -74,6 +75,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(2257, 1501);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.lblTimer);

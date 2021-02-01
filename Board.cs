@@ -37,9 +37,8 @@ namespace Minesweeper
             while(count < SIZE)
             {
                 //If bomb is not already placed there
-                if (board[randX, randY].GetCellValue() != -1)
+                if (!board[randX, randY].CheckBomb())
                 {
-                    board[randX, randY].SetCellValue(-1);
                     board[randX, randY].SetBomb();
                     count++;
                 }
@@ -113,11 +112,6 @@ namespace Minesweeper
         public void SetRevealed(int x, int y)
         {
             board[x, y].SetRevealed();
-        }
-
-        public int GetCellValue(int x, int y)
-        {
-            return board[x, y].GetCellValue();
         }
 
         public bool isBomb(int x, int y)
