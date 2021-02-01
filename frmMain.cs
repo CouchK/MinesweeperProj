@@ -49,6 +49,7 @@ namespace Minesweeper
                     buttons[i, j].Width = 120;
                     buttons[i, j].Padding = new Padding(5);
                     buttons[i, j].BackColor = Color.DarkGray;
+                    buttons[i, j].BackgroundImageLayout = ImageLayout.Stretch;
 
                     //Add a button click event handler
                     buttons[i, j].Click += new EventHandler(ButtonClick);
@@ -83,7 +84,7 @@ namespace Minesweeper
                     {
                         buttons[i, j].Enabled = false;
 
-                        if (board.isBomb(i+1, j+1)) buttons[i, j].Text = "B";
+                        if (board.isBomb(i + 1, j + 1)) buttons[i, j].BackgroundImage = Minesweeper.Properties.Resources.bomb;
                     }
                 }
 
@@ -99,19 +100,19 @@ namespace Minesweeper
                 int neighbors = board.GetNeighbors(x, y);
 
                 //Set cell text colors by amount of neighbors
-                if (neighbors == 1) buttons[x - 1, y - 1].ForeColor = Color.Blue;
-                else if (neighbors == 2) buttons[x - 1, y - 1].ForeColor = Color.Green;
-                else if (neighbors == 3) buttons[x - 1, y - 1].ForeColor = Color.Red;
-                else if (neighbors == 4) buttons[x - 1, y - 1].ForeColor = Color.Navy;
-                else if (neighbors == 5) buttons[x - 1, y - 1].ForeColor = Color.DarkRed;
-                buttons[x - 1, y - 1].Font = new Font(buttons[x - 1, y - 1].Font, FontStyle.Bold);
+                if (neighbors == 1) buttons[x-1, y-1].ForeColor = Color.Blue;
+                else if (neighbors == 2) buttons[x-1, y-1].ForeColor = Color.Green;
+                else if (neighbors == 3) buttons[x-1, y-1].ForeColor = Color.Red;
+                else if (neighbors == 4) buttons[x-1, y-1].ForeColor = Color.Navy;
+                else if (neighbors == 5) buttons[x-1, y-1].ForeColor = Color.DarkRed;
+                buttons[x-1, y-1].Font = new Font(buttons[x-1, y-1].Font, FontStyle.Bold);
 
                 //Set background color of selected cell
-                buttons[x - 1, y - 1].BackColor = Color.LightGray;
+                buttons[x-1, y-1].BackColor = Color.LightGray;
 
                 //Display number of neighbors
-                if (neighbors == 0) buttons[x - 1, y - 1].Text = " ";
-                else buttons[x - 1, y - 1].Text = neighbors + "";
+                if (neighbors == 0) buttons[x-1, y-1].Text = " ";
+                else buttons[x-1, y-1].Text = neighbors + "";
             }
             else { }
         }

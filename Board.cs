@@ -17,11 +17,11 @@ namespace Minesweeper
 
         public void CreateBoard()
         {
-            for (int x = 0; x < SIZE+2; ++x)
+            for (int i = 0; i < SIZE+2; ++i)
             {
-                for (int y = 0; y < SIZE+2; ++y)
+                for (int j = 0; j < SIZE+2; ++j)
                 {
-                    board[x, y] = new Cell();
+                    board[i, j] = new Cell();
                 }
             }     
         }
@@ -31,11 +31,18 @@ namespace Minesweeper
             Random rand = new Random();
             int randX = rand.Next(1,9);
             int randY = rand.Next(1,9);
+            int count = 0;
 
-            for(int x = 0; x < SIZE; x++)
+            //Place 10 bombs
+            while(count < SIZE)
             {
-                board[randX, randY].SetCellValue(-1);
-                board[randX, randY].SetBomb();
+                //If bomb is not already placed there
+                if (board[randX, randY].GetCellValue() != -1)
+                {
+                    board[randX, randY].SetCellValue(-1);
+                    board[randX, randY].SetBomb();
+                    count++;
+                }
                 randX = rand.Next(1,9);
                 randY = rand.Next(1,9);
             }
